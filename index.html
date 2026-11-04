@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get MixR</title>
+<meta name="description" content="Download MixR for iPhone and Android.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><a class="brand" href="./">Mix<span>R</span></a>
+<nav><a href="https://mixr-lcu-prod.web.app/privacy">Privacy</a><a href="https://mixr-lcu-prod.web.app/terms">Terms</a><a href="https://mixr-lcu-prod.web.app/support">Support</a></nav></header>
+<main>
+<h1>Get MixR</h1>
+<p>MixR is a community app for university students. You must be 18 or older.</p>
+<p id="status" class="callout">MixR is in public beta. Pick your phone below.</p>
+<p id="buttons">
+<a id="ios" class="callout" style="display:inline-block;font-weight:700;text-decoration:none;margin:0 12px 12px 0" href="#" hidden>iPhone: join the beta on TestFlight</a>
+<a id="android" class="callout" style="display:inline-block;font-weight:700;text-decoration:none;margin:0 0 12px 0" href="#" hidden>Android: download the beta (APK)</a>
+</p>
+<div id="help" class="muted" hidden>
+<p><b>iPhone:</b> install Apple's free TestFlight app when asked, then tap Accept and Install.</p>
+<p><b>Android:</b> open the downloaded file and allow "install unknown apps" for your browser if Android asks. Google Play Protect may show a warning because the beta is not from the Play Store; choose "Install anyway". Some purchases may not work in the beta.</p>
+</div>
+<p class="muted">MixR is powered by Kultur3.</p>
+</main>
+<footer>&copy; 2026 Victor Onaopemipo Abayomi (trading as Kultur3)</footer>
+<script>
+// Beta links. Swap in the App Store / Google Play pages on launch day and the printed QR codes keep working.
+var TESTFLIGHT_URL = 'https://testflight.apple.com/join/N2DVv1xP';
+var APK_URL = 'https://github.com/AbayomiVee/mixr-beta/raw/main/MixR-beta.apk';
+var APP_STORE_URL = '';
+var GOOGLE_PLAY_URL = '';
+(function () {
+  var ua = navigator.userAgent;
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+  var iosUrl = APP_STORE_URL || TESTFLIGHT_URL;
+  var androidUrl = GOOGLE_PLAY_URL || APK_URL;
+  if (isIOS && iosUrl) { location.replace(iosUrl); return; }
+  if (isAndroid && androidUrl) { location.replace(androidUrl); return; }
+  if (iosUrl) { var a = document.getElementById('ios'); a.href = iosUrl; a.hidden = false; }
+  if (androidUrl) { var g = document.getElementById('android'); g.href = androidUrl; g.hidden = false; }
+  document.getElementById('help').hidden = false;
+})();
+</script>
+</body>
+</html>
